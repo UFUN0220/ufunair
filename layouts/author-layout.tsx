@@ -19,8 +19,8 @@ export function AuthorLayout({ children }: Props) {
   return (
     <Container className="pt-4 lg:pt-12">
       <PageHeader
-        title="About"
-        description="A bit of background on who I am, what I do, and why I started this blog. Nothing too serious, just a little intro to the person typing away behind the scenes."
+        title="README"
+        description="A bit of background on who I am."
         className="border-b border-gray-200 dark:border-gray-700"
       />
       <div className="py-8 md:grid md:grid-cols-3">
@@ -33,24 +33,13 @@ export function AuthorLayout({ children }: Props) {
               <h2 className="mt-0">
                 Hi there <Twemoji emoji="waving-hand" />
               </h2>
-              <p>
-                I'm <strong>Tuan Anh Huynh</strong> (alias <strong>Leo</strong> at work), a software
-                engineer from <strong>Vietnam</strong>. I have a passion for all things{' '}
-                <strong>Javascript</strong>. I enjoy building eCommerce software and stuff related
-                to web dev. I work mainly with <strong>Typescript</strong>, <strong>React</strong>,{' '}
-                <strong>NodeJS</strong>, <strong>Remix</strong>, and <strong>TailwindCSS</strong>.
-              </p>
-              <p>
-                This blog serves as a journal for documenting and sharing the insights and knowledge
-                I've gained as a software engineer. Building, writing, and sharing things is a great
-                way for me to solidify my understanding of new concepts and ideas.
-              </p>
+
               <p>
                 I would greatly appreciate any comments and thoughts on my posts{' '}
                 <Twemoji emoji="clinking-beer-mugs" />.
               </p>
             </div>
-            <div>
+            {/* <div>
               <div className="mb-[1em] mt-[2em] flex items-center justify-between [&>h2]:my-0">
                 <h2>My career</h2>
                 <Button as="a" href="/static/resume.pdf" target="_blank">
@@ -59,7 +48,7 @@ export function AuthorLayout({ children }: Props) {
                 </Button>
               </div>
               <CareerTimeline />
-            </div>
+            </div> */}
             <div>
               <h2>Tech stack</h2>
               <p>
@@ -134,7 +123,7 @@ export function AuthorLayout({ children }: Props) {
                 </a>{' '}
                 for this blog.
               </p>
-              <div>
+              {/* <div>
                 <h3>Legacy versions</h3>
                 <p>I started this blog since 2019 and up until now it has 2 legacy versions:</p>
                 <ul>
@@ -154,9 +143,9 @@ export function AuthorLayout({ children }: Props) {
                     </a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
-            <div>
+            {/* <div>
               <h2>Assets</h2>
               <p>
                 Most of the images in my blog are from{' '}
@@ -176,7 +165,7 @@ export function AuthorLayout({ children }: Props) {
               <p>
                 Thanks for the free resources <Twemoji emoji="folded-hands" />.
               </p>
-            </div>
+            </div> */}
             <div>
               <h2>Contact</h2>
               <p>
@@ -186,7 +175,7 @@ export function AuthorLayout({ children }: Props) {
               </p>
               <SocialAccounts />
             </div>
-            <div>
+            {/* <div>
               <h2>Support</h2>
               <p>If you appreciate my work, consider supporting me:</p>
               <div className="flex flex-col gap-4">
@@ -230,7 +219,7 @@ export function AuthorLayout({ children }: Props) {
                   />
                 </a>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { useKBar } from 'kbar'
-import { Command } from 'lucide-react'
+import { Search } from 'lucide-react'
 
 export function KbarSearchTrigger() {
   let { query } = useKBar()
@@ -11,7 +11,7 @@ export function KbarSearchTrigger() {
       data-umami-event="search-the-site"
       onClick={() => query.toggle()}
     >
-      <Command size={20} strokeWidth={1.5} />
+      <Search size={20} strokeWidth={1.5} />
     </button>
   )
 }

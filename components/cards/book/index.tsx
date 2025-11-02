@@ -2,7 +2,7 @@ import { GradientBorder } from '~/components/ui/gradient-border'
 import { GrowingUnderline } from '~/components/ui/growing-underline'
 import { Link } from '~/components/ui/link'
 import { Rating } from '~/components/ui/rating'
-import { TiltedGridBackground } from '~/components/ui/tilted-grid-background'
+// import { TiltedGridBackground } from '~/components/ui/tilted-grid-background'
 import { Twemoji } from '~/components/ui/twemoji'
 import GoodreadsLogo from '~/icons/goodreads-big.svg'
 import type { GoodreadsBook } from '~/types/data'
@@ -11,7 +11,7 @@ import { BookDetails } from './book-details'
 
 export function BookCard({ book }: { book: GoodreadsBook }) {
   return (
-    <GradientBorder className="flex flex-col gap-8 rounded-2xl px-3 py-6 dark:bg-white/5 md:flex-row md:px-6">
+    <GradientBorder className="flex flex-col gap-8 rounded-2xl px-3 py-6 md:flex-row md:px-6 dark:bg-white/5">
       <TiltedGridBackground className="inset-0 z-[-1]" />
       <div className="mx-auto flex w-60 shrink-0 items-center justify-center">
         <BookCover image={book.book_large_image_url} alt={book.title} />

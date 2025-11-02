@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { KbarSearchTrigger } from '~/components/search/kbar-trigger'
 import { Container } from '~/components/ui/container'
 import { GrowingUnderline } from '~/components/ui/growing-underline'
+import { PinkHover } from '~/components/ui/PinkHover'
 import { Link } from '~/components/ui/link'
 import { HEADER_NAV_LINKS } from '~/data/navigation'
 import { SITE_METADATA } from '~/data/site-metadata'
@@ -33,25 +34,28 @@ export function Header() {
     <Container
       as="header"
       className={clsx(
-        'bg-white/75 py-2 backdrop-blur dark:bg-dark/75',
-        'shadow-sm saturate-100 md:rounded-2xl',
-        SITE_METADATA.stickyNav && 'sticky top-2 z-50 lg:top-3'
+        'bg-white/50 px-1 py-1 backdrop-blur dark:bg-dark/50',
+        'shadow-sm saturate-100 md:rounded-full',
+        'mx-auto max-w-lg', //导航栏宽度
+        SITE_METADATA.stickyNav && 'sticky top-2 z-50 lg:top-8'
       )}
     >
-      <div className="flex items-center justify-between gap-3">
-        <Logo />
-        <div className="flex items-center gap-4">
-          <div className="hidden gap-1.5 sm:flex">
+      <div className="flex items-center justify-center gap-3">
+        <div className="flex items-center gap-8">
+          <Logo />
+          <div className="hidden gap-3 sm:flex">
             {HEADER_NAV_LINKS.map(({ title, href }) => {
               let isActive = pathname.startsWith(href)
               return (
-                <Link key={title} href={href} className="px-3 py-1 font-medium">
-                  <GrowingUnderline
+                <Link key={title} href={href} className="px-1 py-1 font-medium">
+                  {/* <GrowingUnderline */}
+                  <PinkHover
                     className={clsx(isActive && 'bg-[length:100%_50%]')}
                     data-umami-event={`nav-${href.replace('/', '')}`}
                   >
                     {title}
-                  </GrowingUnderline>
+                  </PinkHover>
+                  {/* </GrowingUnderline> */}
                 </Link>
               )
             })}
@@ -60,10 +64,10 @@ export function Header() {
           <div
             data-orientation="vertical"
             role="separator"
-            className="hidden h-4 w-px shrink-0 bg-gray-200 dark:bg-gray-600 md:block"
+            className="hidden h-4 w-px shrink-0 bg-gray-200 md:block dark:bg-gray-600"
           />
-          <div className="flex items-center gap-2">
-            <ThemeSwitcher />
+          <div className="flex items-center gap-3">
+            {/* <ThemeSwitcher /> */}
             <KbarSearchTrigger />
             <MobileNav />
           </div>

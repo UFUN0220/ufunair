@@ -33,7 +33,7 @@ export function ListLayoutWithTags({ title, description, posts, snippets }: List
       <div className="flex gap-x-12">
         <TagsList />
         <div className="py-5 md:py-10">
-          <div className="mb-6 flex items-center gap-2 text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-gray-100 md:mb-10 md:justify-end md:text-3xl">
+          <div className="mb-6 flex items-center gap-2 text-2xl font-bold leading-9 tracking-tight text-gray-900 md:mb-10 md:justify-end md:text-3xl dark:text-gray-100">
             {hasBlogs && (
               <button
                 className={clsx(

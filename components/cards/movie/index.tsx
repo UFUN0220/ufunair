@@ -2,7 +2,7 @@ import { GradientBorder } from '~/components/ui/gradient-border'
 import { GrowingUnderline } from '~/components/ui/growing-underline'
 import { Image, Zoom } from '~/components/ui/image'
 import { Link } from '~/components/ui/link'
-import { TiltedGridBackground } from '~/components/ui/tilted-grid-background'
+// import { TiltedGridBackground } from '~/components/ui/tilted-grid-background'
 import type { ImdbMovie } from '~/types/data'
 import { Ratings } from './ratings'
 

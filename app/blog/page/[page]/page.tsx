@@ -1,5 +1,6 @@
 import { allBlogs } from 'contentlayer/generated'
-import { ListLayout } from '~/layouts/list-layout'
+//import { ListLayout } from '~/layouts/list-layout'
+import { ListLayout } from '~/layouts/list_layout_ufun'
 import { POSTS_PER_PAGE } from '~/utils/const'
 import { allCoreContent } from '~/utils/contentlayer'
 import { sortPosts } from '~/utils/misc'

@@ -5,12 +5,25 @@ import 'remark-github-blockquote-alert/alert.css'
 
 import clsx from 'clsx'
 import type { Metadata } from 'next'
+
+import { Inter, Calistoga } from 'next/font/google'
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+})
+const calistoga = Calistoga({
+  subsets: ['latin'],
+  variable: '--font-serif',
+  weight: ['400'],
+})
+
 import { JetBrains_Mono, Nunito, Playpen_Sans } from 'next/font/google'
 import { UmamiAnalytics } from '~/components/analytics/umami'
 import { Footer } from '~/components/footer'
 import { Header } from '~/components/header'
 import { KBarSearchProvider } from '~/components/search/kbar-provider'
-import { TiltedGridBackground } from '~/components/ui/tilted-grid-background'
+// import { TiltedGridBackground } from '~/components/ui/tilted-grid-background'
+
 import { SITE_METADATA } from '~/data/site-metadata'
 import { ThemeProviders } from './theme-providers'
 
@@ -49,7 +62,8 @@ export let metadata: Metadata = {
     description: SITE_METADATA.description,
     url: './',
     siteName: SITE_METADATA.title,
-    images: [SITE_METADATA.socialBanner],
+    // images: [SITE_METADATA.socialBanner],
+    images: [],
     locale: 'en_US',
     type: 'website',
   },
@@ -73,7 +87,8 @@ export let metadata: Metadata = {
   twitter: {
     title: SITE_METADATA.title,
     card: 'summary_large_image',
-    images: [SITE_METADATA.socialBanner],
+    // images: [SITE_METADATA.socialBanner],
+    images: [],
   },
 }
 
@@ -84,6 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang={SITE_METADATA.language}
       className={clsx(
+        'dark',
         'scroll-smooth',
         FONT_NUNITO.variable,
         FONT_JETBRAINS_MONO.variable,
@@ -96,13 +112,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href={`${basePath}/static/favicons/favicon.png`}
+        href={`${basePath}/static/favicons/favicon.jpg`}
       />
       <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href={`${basePath}/static/favicons/favicon.png`}
+        href={`${basePath}/static/favicons/favicon.jpg`}
       />
       <link rel="manifest" href={`${basePath}/static/favicons/site.webmanifest`} />
       <link
@@ -114,21 +130,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
+
       <body
         className={clsx([
-          'antialiased',
+          'inter.variable',
+          'calistoga.variable',
+          'antialiased, font-sans',
           'relative min-h-screen pl-[calc(100vw-100%)]',
           'flex flex-col',
           'bg-white text-neutral-900',
           'dark:bg-dark dark:text-gray-100',
         ])}
       >
-        <TiltedGridBackground className="inset-x-0 top-0 z-[-1] h-[50vh]" />
+        {/* <TiltedGridBackground className="inset-x-0 top-0 z-[-1] h-[50vh]" /> */}
+        {/* { <TestBackground className="inset-x-0 top-0 z-[-1] h-[50vh]" />  } */}
+
         <ThemeProviders>
           <UmamiAnalytics websiteId={SITE_METADATA.analytics.umamiAnalytics.websiteId} />
           <KBarSearchProvider configs={SITE_METADATA.search.kbarConfigs}>
             <Header />
-            <main className="mb-auto grow">{children}</main>
+            <main className="mb-auto grid grow place-items-center">{children}</main>
           </KBarSearchProvider>
           <Footer />
         </ThemeProviders>

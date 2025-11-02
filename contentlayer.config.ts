@@ -88,7 +88,7 @@ function createSearchIndex(allBlogs) {
 
 export let Blog = defineDocumentType(() => ({
   name: 'Blog',
-  filePathPattern: 'blog/**/*.mdx',
+  filePathPattern: 'blog/**/*.{md,mdx}',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -97,7 +97,10 @@ export let Blog = defineDocumentType(() => ({
     lastmod: { type: 'date' },
     draft: { type: 'boolean' },
     summary: { type: 'string' },
-    images: { type: 'json' },
+    images: {
+      type: 'json',
+      required: false, // 改为可选
+    },
     authors: { type: 'list', of: { type: 'string' } },
     layout: { type: 'string' },
     bibliography: { type: 'string' },
@@ -114,7 +117,8 @@ export let Blog = defineDocumentType(() => ({
         datePublished: doc.date,
         dateModified: doc.lastmod || doc.date,
         description: doc.summary,
-        image: doc.images ? doc.images[0] : SITE_METADATA.socialBanner,
+        //image: doc.images ? doc.images[0] : SITE_METADATA.socialBanner,
+        image: doc.images && doc.images.length > 0 ? doc.images[0] : null,
         url: `${SITE_METADATA.siteUrl}/${doc._raw.flattenedPath}`,
       }),
     },
@@ -151,7 +155,8 @@ export let Snippet = defineDocumentType(() => ({
         datePublished: doc.date,
         dateModified: doc.lastmod || doc.date,
         description: doc.summary,
-        image: doc.images ? doc.images[0] : SITE_METADATA.socialBanner,
+        //image: doc.images ? doc.images[0] : SITE_METADATA.socialBanner,
+        image: doc.images && doc.images.length > 0 ? doc.images[0] : null,
         url: `${SITE_METADATA.siteUrl}/${doc._raw.flattenedPath}`,
       }),
     },

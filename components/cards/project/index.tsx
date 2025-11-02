@@ -7,7 +7,7 @@ import { GradientBorder } from '~/components/ui/gradient-border'
 import { GrowingUnderline } from '~/components/ui/growing-underline'
 import { Image } from '~/components/ui/image'
 import { Link } from '~/components/ui/link'
-import { TiltedGridBackground } from '~/components/ui/tilted-grid-background'
+// import { TiltedGridBackground } from '~/components/ui/tilted-grid-background'
 import type { PROJECTS } from '~/data/projects'
 import type { GithubRepository } from '~/types/data'
 
@@ -20,7 +20,7 @@ export function ProjectCard({ project }: { project: (typeof PROJECTS)[0] }) {
   return (
     <GradientBorder
       offset={28}
-      className="flex flex-col rounded-[40px] p-6 [box-shadow:0_8px_32px_rgba(194,194,218,.3)] dark:bg-white/5 dark:shadow-none md:p-8"
+      className="flex flex-col rounded-[40px] p-6 [box-shadow:0_8px_32px_rgba(194,194,218,.3)] md:p-8 dark:bg-white/5 dark:shadow-none"
     >
       <TiltedGridBackground className="inset-0 z-[-1] rounded-[40px]" />
       <div className="mb-6 flex items-center gap-4">
@@ -69,7 +69,7 @@ export function ProjectCard({ project }: { project: (typeof PROJECTS)[0] }) {
                     </GrowingUnderline>
                   </Link>
                   {idx !== links.length - 1 && (
-                    <span className="hidden text-gray-400 dark:text-gray-500 md:inline">|</span>
+                    <span className="hidden text-gray-400 md:inline dark:text-gray-500">|</span>
                   )}
                 </Fragment>
               ))}

@@ -7,7 +7,9 @@ import { MDX_COMPONENTS } from '~/components/mdx'
 import { MDXLayoutRenderer } from '~/components/mdx/layout-renderer'
 import { SITE_METADATA } from '~/data/site-metadata'
 import { PostBanner } from '~/layouts/post-banner'
-import { PostLayout } from '~/layouts/post-layout'
+//import { PostLayout } from '~/layouts/post-layout'
+import { PostLayout } from '~/layouts/post_layout_ufun'
+
 import { PostSimple } from '~/layouts/post-simple'
 import { allCoreContent, coreContent } from '~/utils/contentlayer'
 import { sortPosts } from '~/utils/misc'
@@ -37,7 +39,9 @@ export async function generateMetadata(props: {
   let publishedAt = new Date(post.date).toISOString()
   let modifiedAt = new Date(post.lastmod || post.date).toISOString()
   let authors = authorDetails.map((author) => author.name)
-  let imageList = [SITE_METADATA.socialBanner]
+  //let imageList = [SITE_METADATA.socialBanner]
+  let imageList = []
+
   if (post.images) {
     imageList = typeof post.images === 'string' ? [post.images] : post.images
   }
@@ -59,14 +63,16 @@ export async function generateMetadata(props: {
       publishedTime: publishedAt,
       modifiedTime: modifiedAt,
       url: './',
-      images: ogImages,
+      //images: ogImages,
+      ...(imageList.length > 0 && { images: ogImages }), // 只有有图片时才包含 images
       authors: authors.length > 0 ? authors : [SITE_METADATA.author],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.summary,
-      images: imageList,
+      //images: imageList,
+      ...(imageList.length > 0 && { images: ogImages }), // 只有有图片时才包含 images
     },
   }
 }

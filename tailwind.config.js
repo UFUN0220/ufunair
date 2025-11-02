@@ -11,7 +11,8 @@ module.exports = {
     './layouts/**/*.{js,ts,tsx}',
     './data/**/*.mdx',
   ],
-  darkMode: 'class',
+  //darkMode: 'class',
+  darkMode: 'media', //全局深色
   theme: {
     extend: {
       keyframes: {
@@ -72,13 +73,42 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-nunito)', ...fontFamily.sans],
+        sans: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          // 其他常见系统的备用字体
+          'Segoe UI',
+          'Roboto',
+          'Oxygen',
+          'Ubuntu',
+          'Cantarell',
+          'Fira Sans',
+          'Droid Sans',
+          'Helvetica Neue',
+          'var(--font-nunito)',
+          ...fontFamily.sans,
+        ],
+        heishenhua: ['heishenhua', ...fontFamily.sans],
+        roadrage: ['roadrage', ...fontFamily.sans],
+        serif: ['Noto Serif', 'Noto Serif SC', 'serif'],
+        // serif: [
+        //   // 优先使用Noto系列的西文衬线体来处理字母和数字
+        //   'Noto Serif',
+        //   // 然后是其他可靠的西文衬线体作为备选
+        //   'Georgia',
+        //   'Times New Roman',
+        //   // 最后才是中文字体
+        //   'Noto Serif SC',
+        //   'SimSun', // 宋体，是Noto Serif SC的备用
+        //   'serif' // 通用衬线字体族，必须放在最后
+        // ],
         greeting: ['var(--font-playpen-sans)'],
         mono: ['var(--font-jetbrains-mono)', ...fontFamily.mono],
       },
       colors: {
         primary: colors.indigo,
-        dark: '#1f1f1f',
+        dark: '#121212',
+        'dark-text': '#ffffff', // 暗色模式下的文本颜色
         spotify: '#1DB954',
         goodreads: '#372213',
         facebook: '#1877f2',
@@ -242,10 +272,14 @@ module.exports = {
         },
         invert: {
           css: {
+            color: theme('colors.dark-text'), // 暗色模式下的文本颜色
             a: {
               color: theme('colors.primary.400'),
               '&:hover': {
                 color: `${theme('colors.primary.400')}`,
+              },
+              'h1,h2,h3,h4,h5,h6': {
+                color: theme('colors.dark-text'), // 暗色模式下的标题颜色
               },
               code: { color: theme('colors.primary.400') },
             },
@@ -275,5 +309,15 @@ module.exports = {
       }),
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    function ({ addBase }) {
+      addBase({
+        body: {
+          fontFamily: 'Noto Serif SC, serif',
+        },
+      })
+    },
+  ],
 }
